@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Doctor Dashboard</h1>
+    </header>
+
+    <section class="search-section">
+      <h2>Search Patient</h2>
+      <form id="searchForm">
+        <input type="text" id="patientId" placeholder="Enter Patient ID (e.g., P001)" required>
+        <button type="submit">Search</button>
+      </form>
+      <p id="notFoundMsg" class="error hidden">Patient not found.</p>
+    </section>
+
+    <section id="patientSection" class="hidden">
+      <div class="patient-header">
+        <h2 id="patientName">Patient Name</h2>
+        <p>ID: <span id="patientIdDisplay"></span></p>
+      </div>
+
+      <h3>Medical History</h3>
+      <div id="historyCards" class="card-list"></div>
+
+      <h3>Add New Diagnosis</h3>
+      <form id="diagnosisForm">
+        <input type="text" id="diagnosis" placeholder="Diagnosis" required>
+        <input type="text" id="oxygen" placeholder="Oxygen Level (%)" required>
+        <input type="text" id="heartRate" placeholder="Heart Rate (bpm)" required>
+        <input type="text" id="medication" placeholder="Medication" required>
+        <input type="date" id="visitDate" required>
+        <textarea id="notes" placeholder="Notes (optional)"></textarea>
+        <button type="submit">Add Record</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="js/doctor-dashboard.js"></script>
+</body>
+</html>
