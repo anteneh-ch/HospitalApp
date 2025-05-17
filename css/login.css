@@ -8,33 +8,31 @@ body {
 .login-container {
   display: flex;
   height: 100vh;
+  background-color: #ffffff;
 }
 
-.login-left, .login-right {
+.login-left {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px;
-}
-
-.login-left {
-  max-width: 600px;
+  padding: 60px;
+  color: #000000;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 42px;
   margin-bottom: 5px;
 }
 
 .subtitle {
   font-size: 18px;
-  color: #555;
   margin-bottom: 30px;
+  color: #333;
 }
 
 input {
-  padding: 12px;
+  padding: 14px;
   margin: 10px 0;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -43,7 +41,7 @@ input {
 }
 
 button {
-  padding: 12px;
+  padding: 14px;
   font-size: 16px;
   background-color: #007bff;
   color: white;
@@ -58,9 +56,20 @@ button:hover {
   background-color: #0056b3;
 }
 
+.login-right {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
 .login-right img {
   width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 10px;
+  max-height: 90vh;
 }
+
