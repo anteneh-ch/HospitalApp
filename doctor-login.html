@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Doctor Login</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Doctor Login</h1>
-    </header>
+  <div class="login-container">
+    <div class="login-left">
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Doctor Portal</p>
 
-    <section class="search-section">
       <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Email" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
         <button type="submit">Login</button>
       </form>
-    </section>
+    </div>
+
+    <div class="login-right">
+      <img src="https://cdn.pixabay.com/photo/2017/08/06/00/03/stethoscope-2587665_1280.jpg" alt="Doctor Illustration" />
+    </div>
   </div>
 
   <script src="js/doctor-login.js"></script>
