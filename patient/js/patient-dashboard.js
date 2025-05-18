@@ -2,12 +2,11 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const id = localStorage.getItem("patientId");
-  if (!id) return (window.location.href = "patient-login.html");
+  if (!id) return (window.location.href = "/patient/patient-login.html");
 
   const mockPatients = {
     "pat-789": {
       name: "John Doe",
-      dob: "1985-04-23",
       records: [
         {
           date: "2025-05-17",
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function logoutPatient() {
   localStorage.removeItem("patientId");
-  window.location.href = "patient-login.html";
+  window.location.href = "/patient/patient-login.html";
 }
 
 function renderRecords(records) {
@@ -75,6 +74,6 @@ function renderAppointments(records) {
 function renderFlaggedDoctors(doctors) {
   const list = document.getElementById("flagged-doctors");
   list.innerHTML = doctors.length
-    ? doctors.map(doc => `<div class="record"><strong>${doc}</strong></div>`).join("")
+    ? doctors.map(doc => `<div class="flagged">${doc}</div>`).join("")
     : "<p>No flagged doctors.</p>";
 }

@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Patient Login </title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/patient-login.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Login | PIMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/patient-login.css">
 </head>
 <body>
   <div class="login-container">
     <div class="login-box">
       <h2>Patient Portal Login</h2>
-      <input type="text" id="patientId" placeholder="Patient ID" />
-      <input type="password" id="password" placeholder="Password" />
+      <input type="text" id="patientId" placeholder="Patient ID" required>
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Password" required>
+        <span onclick="togglePassword()" class="toggle-pass">👁️</span>
+      </div>
       <button onclick="loginPatient()">Login</button>
       <p id="error-msg"></p>
+      <p class="hint">Hint: ID = pat-789 | Password = 1234</p>
     </div>
   </div>
 
-  <!-- JavaScript logic -->
   <script src="js/patient-login.js"></script>
 </body>
 </html>
-
