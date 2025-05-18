@@ -1,0 +1,69 @@
+/* patient-dashboard.css */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f9fc;
+  margin: 0;
+  color: #2c3e50;
+}
+
+header {
+  background-color: #2980b9;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content .logo {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.header-content button {
+  background-color: #e74c3c;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+main {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  color: #2980b9;
+}
+
+.record,
+.appointment {
+  padding: 12px;
+  background-color: #f0f4f8;
+  border: 1px solid #dce3eb;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+.record strong,
+.appointment strong {
+  color: #34495e;
+}
