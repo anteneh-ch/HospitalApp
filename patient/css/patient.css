@@ -1,0 +1,101 @@
+/* patient.css */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f4f8;
+  color: #333;
+}
+
+header {
+  background-color: #2b7a78;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #3aafa9;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+main {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+#record-list .record,
+#appointment-list .appointment {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #def2f1;
+}
+
+.login-box {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #2b7a78;
+  text-align: center;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-box button {
+  width: 100%;
+  background-color: #2b7a78;
+  padding: 12px;
+  font-weight: bold;
+}
+
+#error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
