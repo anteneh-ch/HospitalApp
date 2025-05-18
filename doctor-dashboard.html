@@ -2,49 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Doctor Dashboard</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard | PIMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
-  <div class="dashboard-container">
-    <header>
-      <h1>Doctor Dashboard</h1>
-    </header>
-
-    <div class="search-box">
-      <form id="searchForm">
-        <input type="text" id="patientId" placeholder="Enter Patient ID (e.g., P001)" required />
-        <button type="submit">Search</button>
-      </form>
-      <p id="notFoundMsg" class="error hidden">Patient not found.</p>
-    </div>
-
-    <div id="patientSection" class="hidden">
-      <div class="patient-header">
-        <h2 id="patientName">Patient Name</h2>
-        <p>ID: <span id="patientIdDisplay"></span></p>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <i class="fas fa-user-md"></i>
+        <span>Doctor Dashboard</span>
       </div>
-
-      <div class="history-section">
-        <h3>Medical History</h3>
-        <div id="historyCards" class="card-list"></div>
-      </div>
-
-      <div class="add-form">
-        <h3>Add Diagnosis</h3>
-        <form id="diagnosisForm">
-          <input type="text" id="diagnosis" placeholder="Diagnosis" required />
-          <input type="text" id="oxygen" placeholder="Oxygen Level (%)" required />
-          <input type="text" id="heartRate" placeholder="Heart Rate (bpm)" required />
-          <input type="text" id="medication" placeholder="Medication" required />
-          <input type="date" id="visitDate" required />
-          <textarea id="notes" placeholder="Notes (optional)"></textarea>
-          <button type="submit">Add Record</button>
-        </form>
+      <div class="user-info">
+        <span id="doctor-name">Welcome, Dr.</span>
+        <button id="logoutBtn" class="btn logout-btn">Logout</button>
       </div>
     </div>
+  </header>
 
-    <script src="js/doctor-dashboard.js"></script>
+  <div class="container">
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <ul class="sidebar-menu">
+          <li><a href="#" onclick="showSection('search')" class="active"><i class="fas fa-search"></i> Patient Search</a></li>
+          <li><a href="#" onclick="showSection('prescriptions')"><i class="fas fa-pills"></i> Prescriptions</a></li>
+          <li><a href="#" onclick="showSection('lab')"><i class="fas fa-vials"></i> Lab Orders</a></li>
+          <li><a href="#" onclick="showSection('appointments')"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+          <li><a href="#"><i class="fas fa-bell"></i> Notifications <span class="notification-badge">0</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Patient Search Section -->
+        <div id="section-search" class="section-content">
+          <div class="card">
+            <h2>Find Patient</h2>
+            <div class="search-box">
+              <input type="text" id="patient-id-input" placeholder="Enter Patient ID" />
+              <button class="btn" onclick="searchPatient()">Search</button>
+            </div>
+          </div>
+
+          <div id="patientSection" class="hidden">
+            <div class="card">
+              <h2>Patient Summary</h2>
+              <p><strong>Name:</strong> <span id="patientName"></span></p>
+              <p><strong>Date of Birth:</strong> <span id="patientDOB"></span></p>
+              <p><strong>Last Visit:</strong> <span id="lastVisit"></span></p>
+            </div>
+            <div class="card">
+              <button class="btn" onclick="toggleMedicalSection()">View Medical Records</button>
+            </div>
+            <div id="medicalRecords" class="card hidden">
+              <h2>Add Medical Record</h2>
+              <input type="text" id="diagnosis" placeholder="Diagnosis">
+              <input type="text" id="bpInput" placeholder="Blood Pressure">
+              <input type="text" id="hrInput" placeholder="Heart Rate">
+              <input type="text" id="oxyInput" placeholder="Oxygen Level">
+              <input type="text" id="tempInput" placeholder="Temperature">
+              <textarea id="notes" placeholder="Doctor's Notes..."></textarea>
+              <h3>Doctor Orders</h3>
+              <label><input type="checkbox" class="order" value="CT Scan"> CT Scan</label><br>
+              <label><input type="checkbox" class="order" value="Blood Test"> Blood Test</label><br>
+              <label><input type="checkbox" class="order" value="ECG"> ECG</label><br>
+              <input type="text" id="customOrder" placeholder="Other order...">
+              <input type="text" id="medication" placeholder="Prescribed Medication">
+              <label><input type="checkbox" id="medDone"> Mark as Done</label>
+              <input type="date" id="appointment">
+              <button class="btn" onclick="submitRecord()">Save Record</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prescriptions Section -->
+        <div id="section-prescriptions" class="section-content hidden">
+          <div class="card">
+            <h2>Prescriptions</h2>
+            <p>Feature coming soon...</p>
+          </div>
+        </div>
+
+        <!-- Lab Orders Section -->
+        <div id="section-lab" class="section-content hidden">
+          <div class="card">
+            <h2>Lab Orders</h2>
+            <p>CT Scans, X-rays, and lab tests will be shown here.</p>
+          </div>
+        </div>
+
+        <!-- Appointments Section -->
+        <div id="section-appointments" class="section-content hidden">
+          <div class="card">
+            <h2>Appointments</h2>
+            <p>Upcoming and past appointments will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="js/doctor-dashboard.js"></script>
 </body>
 </html>
+
