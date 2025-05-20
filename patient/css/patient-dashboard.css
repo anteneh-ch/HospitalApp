@@ -1,14 +1,14 @@
-/* patient-dashboard.css - matches doctor dashboard */
+/* patient-dashboard.css - based on doctor style */
 
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: #f4f7fb;
+  background: #f5fbf8;
   color: #333;
 }
 
 header {
-  background: linear-gradient(to right, #00796b, #004d40);
+  background: linear-gradient(to right, #00695c, #004d40);
   color: white;
   padding: 20px;
   display: flex;
@@ -66,7 +66,7 @@ button.logout {
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-  background: #00796b;
+  background: #004d40;
   color: white;
 }
 
@@ -84,7 +84,7 @@ button.logout {
 
 .card h3 {
   margin-top: 0;
-  color: #00796b;
+  color: #00695c;
 }
 
 .record {
@@ -93,5 +93,5 @@ button.logout {
   border-left: 4px solid #004d40;
   margin-bottom: 12px;
   border-radius: 6px;
+  line-height: 1.5;
 }
-

@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Patient Dashboard | PIMS</title>
+  <link rel="stylesheet" href="css/patient-dashboard.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/patient-dashboard.css">
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <h2>Welcome, <span id="patient-name"></span></h2>
-      <button onclick="logoutPatient()">Logout</button>
-    </div>
+    <h2>Welcome, Patient</h2>
+    <button class="logout" onclick="logoutPatient()">Logout</button>
   </header>
 
-  <main>
-    <section class="card">
-      <h3>Medical History</h3>
-      <div id="record-list"></div>
-    </section>
+  <div class="container">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#" class="active" onclick="showSection('diagnosis')">📝 Diagnosis</a></li>
+        <li><a href="#" onclick="showSection('medication')">💊 Medication</a></li>
+        <li><a href="#" onclick="showSection('tests')">🧪 Test Results</a></li>
+      </ul>
+    </div>
 
-    <section class="card">
-      <h3>Appointments</h3>
-      <div id="appointment-list"></div>
-    </section>
+    <div class="main">
+      <!-- Diagnosis Section -->
+      <div class="card section" id="diagnosis-section">
+        <h3>Diagnosis History</h3>
+        <div id="diagnosis-list"></div>
+      </div>
 
-    <section class="card">
-      <h3>Flagged Doctors</h3>
-      <div id="flagged-doctors"></div>
-    </section>
-  </main>
+      <!-- Medication Section -->
+      <div class="card section" id="medication-section" style="display: none">
+        <h3>Medication History</h3>
+        <div id="medication-list"></div>
+      </div>
+
+      <!-- Test Results Section -->
+      <div class="card section" id="tests-section" style="display: none">
+        <h3>Test Results</h3>
+        <div id="tests-list"></div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/patient-dashboard.js"></script>
 </body>

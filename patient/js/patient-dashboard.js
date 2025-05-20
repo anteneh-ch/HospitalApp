@@ -1,79 +1,61 @@
 // patient-dashboard.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  const id = localStorage.getItem("patientId");
-  if (!id) return (window.location.href = "/patient/patient-login.html");
-
-  const mockPatients = {
-    "pat-789": {
-      name: "John Doe",
-      records: [
-        {
-          date: "2025-05-17",
-          diagnosis: "Hypertension",
-          vitals: { bp: "120/80", hr: "70", oxy: "98%", temp: "36.7" },
-          medication: "Lisinopril",
-          medDone: true,
-          notes: "Follow-up in 1 month",
-          orders: ["Blood Test", "CT Scan"],
-          appointment: "2025-06-01"
-        },
-        {
-          date: "2025-04-15",
-          diagnosis: "Routine Checkup",
-          vitals: { bp: "115/75", hr: "72", oxy: "97%", temp: "36.6" },
-          medication: "None",
-          medDone: false,
-          notes: "Patient stable.",
-          orders: [],
-          appointment: "2025-05-01"
-        }
-      ],
-      flaggedDoctors: ["Dr. Strange", "Dr. Banner"]
-    }
-  };
-
-  const patient = mockPatients[id];
-  if (!patient) return (document.body.innerHTML = "<h1>Patient Not Found</h1>");
-
-  document.getElementById("patient-name").textContent = patient.name;
-
-  renderRecords(patient.records);
-  renderAppointments(patient.records);
-  renderFlaggedDoctors(patient.flaggedDoctors);
+  renderDiagnosis();
+  renderMedication();
+  renderTests();
 });
+
+const patientData = {
+  diagnosis: [
+    { text: "Seasonal Allergy", notes: "Prescribed antihistamines." },
+    { text: "Flu", notes: "Advised rest and fluids." }
+  ],
+  medication: [
+    { name: "Ibuprofen", notes: "200mg every 6 hours" }
+  ],
+  tests: [
+    { type: "Blood Test", notes: "Normal CBC values." },
+    { type: "X-ray", notes: "No abnormalities found." }
+  ]
+};
+
+function showSection(id) {
+  document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+  document.querySelectorAll(".sidebar ul li a").forEach(link => link.classList.remove("active"));
+  document.getElementById(`${id}-section`).style.display = "block";
+  document.querySelector(`a[onclick*='${id}']`).classList.add("active");
+}
+
+function renderDiagnosis() {
+  const list = document.getElementById("diagnosis-list");
+  list.innerHTML = patientData.diagnosis.map(d => `
+    <div class="record">
+      <strong>${d.text}</strong><br>${d.notes}
+    </div>
+  `).join("");
+}
+
+function renderMedication() {
+  const list = document.getElementById("medication-list");
+  list.innerHTML = patientData.medication.map(m => `
+    <div class="record">
+      <strong>${m.name}</strong><br>${m.notes}
+    </div>
+  `).join("");
+}
+
+function renderTests() {
+  const list = document.getElementById("tests-list");
+  list.innerHTML = patientData.tests.map(t => `
+    <div class="record">
+      <strong>${t.type}</strong><br>${t.notes}
+    </div>
+  `).join("");
+}
 
 function logoutPatient() {
   localStorage.removeItem("patientId");
-  window.location.href = "/patient/patient-login.html";
+  window.location.href = "/shared-login/login.html";
 }
 
-function renderRecords(records) {
-  const list = document.getElementById("record-list");
-  list.innerHTML = records.map(r => `
-    <div class="record">
-      <strong>Date:</strong> ${r.date}<br>
-      <strong>Diagnosis:</strong> ${r.diagnosis}<br>
-      <strong>Vitals:</strong> BP ${r.vitals.bp}, HR ${r.vitals.hr}, OXY ${r.vitals.oxy}, Temp ${r.vitals.temp}<br>
-      <strong>Medication:</strong> ${r.medication} ${r.medDone ? "(✔)" : "(Pending)"}<br>
-      <strong>Notes:</strong> ${r.notes}<br>
-      <strong>Orders:</strong> ${r.orders.join(", ") || "None"}
-    </div>
-  `).join("");
-}
-
-function renderAppointments(records) {
-  const list = document.getElementById("appointment-list");
-  list.innerHTML = records.map(r => r.appointment).filter(Boolean).map(date => `
-    <div class="appointment">
-      <strong>Scheduled:</strong> ${date}
-    </div>
-  `).join("");
-}
-
-function renderFlaggedDoctors(doctors) {
-  const list = document.getElementById("flagged-doctors");
-  list.innerHTML = doctors.length
-    ? doctors.map(doc => `<div class="flagged">${doc}</div>`).join("")
-    : "<p>No flagged doctors.</p>";
-}
