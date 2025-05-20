@@ -81,7 +81,7 @@ function addMedication() {
   document.getElementById("medication-notes").value = "";
 }
 
-function addTestResult() {
+function addTestOrderAndResult() {
   const type = document.getElementById("test-type").value;
   const notes = document.getElementById("test-notes").value.trim();
   if (!type) return;
