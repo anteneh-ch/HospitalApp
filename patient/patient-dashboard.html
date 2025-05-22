@@ -9,7 +9,7 @@
 </head>
 <body>
   <header>
-    <h2>Welcome, Patient</h2>
+    <h2>Patient Dashboard</h2>
     <button class="logout" onclick="logoutPatient()">Logout</button>
   </header>
 
@@ -18,7 +18,7 @@
       <ul>
         <li><a href="#" class="active" onclick="showSection('diagnosis')">📝 Diagnosis</a></li>
         <li><a href="#" onclick="showSection('medication')">💊 Medication</a></li>
-        <li><a href="#" onclick="showSection('tests')">🧪 Test Results</a></li>
+        <li><a href="#" onclick="showSection('tests')">🧪 Test Orders & Results</a></li>
       </ul>
     </div>
 
@@ -26,19 +26,51 @@
       <!-- Diagnosis Section -->
       <div class="card section" id="diagnosis-section">
         <h3>Diagnosis History</h3>
-        <div id="diagnosis-list"></div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Hospital</th>
+              <th>Doctor</th>
+              <th>Disease</th>
+              <th>Test Result</th>
+            </tr>
+          </thead>
+          <tbody id="diagnosis-list"></tbody>
+        </table>
       </div>
 
       <!-- Medication Section -->
       <div class="card section" id="medication-section" style="display: none">
         <h3>Medication History</h3>
-        <div id="medication-list"></div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Hospital</th>
+              <th>Doctor</th>
+              <th>Medication</th>
+            </tr>
+          </thead>
+          <tbody id="medication-list"></tbody>
+        </table>
       </div>
 
-      <!-- Test Results Section -->
+      <!-- Test Section -->
       <div class="card section" id="tests-section" style="display: none">
-        <h3>Test Results</h3>
-        <div id="tests-list"></div>
+        <h3>Test Orders & Results</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Hospital</th>
+              <th>Doctor</th>
+              <th>Test Type</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="tests-list"></tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -46,3 +78,4 @@
   <script src="js/patient-dashboard.js"></script>
 </body>
 </html>
+

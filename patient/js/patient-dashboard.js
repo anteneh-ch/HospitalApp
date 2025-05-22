@@ -1,24 +1,11 @@
-// patient-dashboard.js
+// patient-dashboard.js (read-only)
 
 document.addEventListener("DOMContentLoaded", () => {
+  showSection("diagnosis");
   renderDiagnosis();
   renderMedication();
   renderTests();
 });
-
-const patientData = {
-  diagnosis: [
-    { text: "Seasonal Allergy", notes: "Prescribed antihistamines." },
-    { text: "Flu", notes: "Advised rest and fluids." }
-  ],
-  medication: [
-    { name: "Ibuprofen", notes: "200mg every 6 hours" }
-  ],
-  tests: [
-    { type: "Blood Test", notes: "Normal CBC values." },
-    { type: "X-ray", notes: "No abnormalities found." }
-  ]
-};
 
 function showSection(id) {
   document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
@@ -27,30 +14,56 @@ function showSection(id) {
   document.querySelector(`a[onclick*='${id}']`).classList.add("active");
 }
 
+const patientData = {
+  diagnosis: [
+    { date: "2024-12-01", doctor: "Dr. Helen", hospital: "City Clinic", text: "Diabetes", test: "Blood Test: Normal" },
+    { date: "2024-11-20", doctor: "Dr. Kenan", hospital: "Universal Health", text: "Flu", test: "X-ray: Clear" }
+  ],
+  medication: [
+    { date: "2024-12-01", doctor: "Dr. Helen", hospital: "City Clinic", name: "Metformin" },
+    { date: "2024-11-21", doctor: "Dr. Kenan", hospital: "Universal Health", name: "Ibuprofen" }
+  ],
+  tests: [
+    { date: "2024-12-01", doctor: "Dr. Helen", hospital: "City Clinic", type: "Blood Test", notes: "Normal CBC" },
+    { date: "2024-11-20", doctor: "Dr. Kenan", hospital: "Universal Health", type: "X-ray", notes: "No issue found" }
+  ]
+};
+
 function renderDiagnosis() {
   const list = document.getElementById("diagnosis-list");
   list.innerHTML = patientData.diagnosis.map(d => `
-    <div class="record">
-      <strong>${d.text}</strong><br>${d.notes}
-    </div>
+    <tr>
+      <td>${d.date}</td>
+      <td>${d.hospital}</td>
+      <td>${d.doctor}</td>
+      <td>${d.text}</td>
+      <td>${d.test}</td>
+    </tr>
   `).join("");
 }
 
 function renderMedication() {
   const list = document.getElementById("medication-list");
   list.innerHTML = patientData.medication.map(m => `
-    <div class="record">
-      <strong>${m.name}</strong><br>${m.notes}
-    </div>
+    <tr>
+      <td>${m.date}</td>
+      <td>${m.hospital}</td>
+      <td>${m.doctor}</td>
+      <td>${m.name}</td>
+    </tr>
   `).join("");
 }
 
 function renderTests() {
   const list = document.getElementById("tests-list");
   list.innerHTML = patientData.tests.map(t => `
-    <div class="record">
-      <strong>${t.type}</strong><br>${t.notes}
-    </div>
+    <tr>
+      <td>${t.date}</td>
+      <td>${t.hospital}</td>
+      <td>${t.doctor}</td>
+      <td>${t.type}</td>
+      <td>${t.notes}</td>
+    </tr>
   `).join("");
 }
 

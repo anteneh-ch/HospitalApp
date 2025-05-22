@@ -18,44 +18,94 @@
       <ul>
         <li><a href="#" class="active" onclick="showSection('diagnosis')">📝 Diagnosis</a></li>
         <li><a href="#" onclick="showSection('medication')">💊 Medication</a></li>
-        <li><a href="#" onclick="showSection('tests')">🧪 Test Results</a></li>
+        <li><a href="#" onclick="showSection('tests')">🧪 Test Orders & Results</a></li>
       </ul>
     </div>
 
     <div class="main">
+      <div class="card">
+        <h3>Search Patient by ID</h3>
+        <input type="text" id="searchId" placeholder="Enter Patient ID">
+        <button onclick="loadPatient()">Search</button>
+        <p id="search-error"></p>
+      </div>
+
       <!-- Diagnosis Section -->
       <div class="card section" id="diagnosis-section">
         <h3>Diagnosis History</h3>
-        <div id="diagnosis-list"></div>
-        <h4>Add New Diagnosis</h4>
-        <input type="text" id="diagnosis-input" placeholder="Diagnosis">
-        <textarea id="diagnosis-notes" placeholder="Notes..."></textarea>
-        <button onclick="addDiagnosis()">Add</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Hospital</th>
+              <th>Doctor</th>
+              <th>Disease</th>
+              <th>Test Result</th>
+            </tr>
+          </thead>
+          <tbody id="diagnosis-list"></tbody>
+        </table>
+        <button onclick="toggleDiagnosisForm()">Add Diagnosis</button>
+        <div id="add-diagnosis-form" style="display: none; margin-top: 15px;">
+          <input type="text" id="diagnosis-doctor" placeholder="Doctor Name">
+          <input type="text" id="diagnosis-hospital" placeholder="Hospital Name">
+          <input type="text" id="diagnosis-input" placeholder="Disease/Diagnosis">
+          <input type="text" id="test-input" placeholder="Test Result (optional)">
+          <button onclick="addDiagnosis()">Save</button>
+        </div>
       </div>
 
       <!-- Medication Section -->
       <div class="card section" id="medication-section" style="display: none">
-        <h3>Medication List</h3>
-        <div id="medication-list"></div>
-        <h4>Add New Medication</h4>
-        <input type="text" id="medication-input" placeholder="Medication Name">
-        <textarea id="medication-notes" placeholder="Dosage / Notes..."></textarea>
-        <button onclick="addMedication()">Add</button>
+        <h3>Medication History</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Hospital</th>
+              <th>Doctor</th>
+              <th>Medication</th>
+            </tr>
+          </thead>
+          <tbody id="medication-list"></tbody>
+        </table>
+        <button onclick="toggleMedicationForm()">Add Medication</button>
+        <div id="add-medication-form" style="display: none; margin-top: 15px;">
+          <input type="text" id="medication-doctor" placeholder="Doctor Name">
+          <input type="text" id="medication-hospital" placeholder="Hospital Name">
+          <input type="text" id="medication-input" placeholder="Medication Name">
+          <button onclick="addMedication()">Save</button>
+        </div>
       </div>
 
-      <!-- Test Order And Results Section -->
+      <!-- Test Section -->
       <div class="card section" id="tests-section" style="display: none">
-        <h3>Test Order And Result</h3>
-        <div id="tests-list"></div>
-        <h4>Add New Test Order And Result</h4>
-        <select id="test-type">
-          <option value="CT Scan">CT Scan</option>
-          <option value="Blood Test">Blood Test</option>
-          <option value="X-ray">X-ray</option>
-          <option value="Ultrasound">Ultrasound</option>
-        </select>
-        <textarea id="test-notes" placeholder="Result Notes..."></textarea>
-        <button onclick="addTestOrderAndResult()">Add</button>
+        <h3>Test Orders & Results</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Hospital</th>
+              <th>Doctor</th>
+              <th>Test Type</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="tests-list"></tbody>
+        </table>
+        <button onclick="toggleTestForm()">Add Test Result</button>
+        <div id="add-test-form" style="display: none; margin-top: 15px;">
+          <input type="text" id="test-doctor" placeholder="Doctor Name">
+          <input type="text" id="test-hospital" placeholder="Hospital Name">
+          <select id="test-type">
+            <option value="CT Scan">CT Scan</option>
+            <option value="Blood Test">Blood Test</option>
+            <option value="X-ray">X-ray</option>
+            <option value="Ultrasound">Ultrasound</option>
+          </select>
+          <textarea id="test-notes" placeholder="Result Notes..."></textarea>
+          <button onclick="addTestResult()">Save</button>
+        </div>
       </div>
     </div>
   </div>
@@ -63,4 +113,3 @@
   <script src="js/doctor-dashboard.js"></script>
 </body>
 </html>
-
